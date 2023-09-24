@@ -8,6 +8,6 @@ const prisma = new PrismaClient()
 prisma.user.create({
     data: {
         name: 'Pedro Veras',
-        email: 'pedroveras@gmail.com'
+        email: 'pedroveras@gmail.com',
     }
 })
