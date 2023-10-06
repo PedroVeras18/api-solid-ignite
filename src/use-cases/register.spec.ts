@@ -27,7 +27,6 @@ describe('Register Use Case', () => {
             email: 'johndoe@gmail.com',
             password: '123456'
         })
-
         const isPasswordCorrectlyHashed = await compare(
             '123456',
             user.password_hash
