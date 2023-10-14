@@ -1,6 +1,6 @@
-import { z } from "zod"
-import { FastifyRequest, FastifyReply } from "fastify"
-import { MakeSearchGymsUseCase } from "@/use-cases/factories/make-search-gyms-use-case";
+import { FastifyReply, FastifyRequest } from 'fastify'
+import { z } from 'zod'
+import { MakeSearchGymsUseCase } from '@/use-cases/factories/make-search-gyms-use-case'
 
 export async function search(request: FastifyRequest, reply: FastifyReply) {
     const searchGymsQuerySchema = z.object({
@@ -14,10 +14,10 @@ export async function search(request: FastifyRequest, reply: FastifyReply) {
 
     const { gyms } = await searchGymsUseCase.execute({
         query: q,
-        page
+        page,
     })
 
-    return reply.status(201).send({
+    return reply.status(200).send({
         gyms,
     })
 }
