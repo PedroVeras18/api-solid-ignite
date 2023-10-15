@@ -1,6 +1,6 @@
-import { z } from "zod"
-import { FastifyRequest, FastifyReply } from "fastify"
-import { MakeFetchUserCheckInsHistoryUseCase } from "@/use-cases/factories/make-fetch-user-check-ins-history-use-case";
+import { FastifyReply, FastifyRequest } from 'fastify'
+import { z } from 'zod'
+import { MakeFetchUserCheckInsHistoryUseCase } from '@/use-cases/factories/make-fetch-user-check-ins-history-use-case'
 
 export async function history(request: FastifyRequest, reply: FastifyReply) {
     const checkInHistoryQuerySchema = z.object({
@@ -13,10 +13,10 @@ export async function history(request: FastifyRequest, reply: FastifyReply) {
 
     const { checkIns } = await fetchUserCheckInsHistoryUseCase.execute({
         page,
-        userId: request.user.sub
+        userId: request.user.sub,
     })
 
-    return reply.status(201).send({
+    return reply.status(200).send({
         checkIns,
     })
 }
